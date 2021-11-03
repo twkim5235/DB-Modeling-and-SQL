@@ -193,4 +193,19 @@
   | 2      | 2    | B    | 나   | b    |
   | 3      | 3    | C    | 다   | c    |
 
+### MySQL procedure 생성 및 호출 방법
+~~~mysql
+//생성
+create procedure 프로시저 이름(ex: SP_Insert_SchoolClass)(
+    필드 이름 필드 타입,
+    필드 이름 필드 타입,
+    ....
+)
+begin(ex insert)
+	insert into 테이블 이름(필드, 필드, ...)
+  values (프로시저 필드, 프로시저 필드, ...)
+end
 
+//호출
+call 프로시저 이름(필드, 필드, ...);
+~~~
