@@ -203,9 +203,9 @@ CREATE PROCEDURE 프로시저 이름(ex: SP_Insert_SchoolClass)(
 )
 BEGIN(ex insert)
 	insert into 테이블 이름(필드, 필드, ...)
-  values (프로시저 필드, 프로시저 필드, ...)
+  values (프로시저 필드, 프로시저 필드, ...);
 END
 
 //호출
-call 프로시저 이름(필드, 필드, ...);
+CALL 프로시저 이름(필드, 필드, ...);
 ~~~
