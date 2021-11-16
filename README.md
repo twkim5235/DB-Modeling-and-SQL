@@ -357,11 +357,11 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 #### 2정규형이기 위해서는 모든 비 식별자 속성은 후보 식별자 속성에 완전 함수 종속돼야 한다.
 
-![1](twkim5235/DB-Modeling-and-SQL/picture/2정규화_위반.png)
+![](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/picture/2%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA_%E1%84%8B%E1%85%B1%E1%84%87%E1%85%A1%E1%86%AB.png)
 
 **C라는 항목이 A, B에 종속적인게 아니라 B에만 종속되기 때문에 2정규화에 위반 된다.**
 
-![2](/picture/2정규화.png)
+![2](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/picture/2%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA.png)
 
 **B, C를 따로 테이블로 꺼낸 뒤 기존 테이블에 FK로 참조하게 관계를 맺어준다.**
 
