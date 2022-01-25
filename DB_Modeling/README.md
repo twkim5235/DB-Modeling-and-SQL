@@ -346,11 +346,11 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 #### 2정규형이기 위해서는 모든 비 식별자 속성은 후보 식별자 속성에 완전 함수 종속돼야 한다.
 
-![](./picture/2%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA_%E1%84%8B%E1%85%B1%E1%84%87%E1%85%A1%E1%86%AB.png)
+![2정규형 위반](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/2%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
 
 **C라는 항목이 A, B에 종속적인게 아니라 B에만 종속되기 때문에 2정규화에 위반 된다.**
 
-![2](./picture/2%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA.png)
+![2정규형](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/2%EC%A0%95%EA%B7%9C%ED%99%94.png)
 
 **B, C를 따로 테이블로 꺼낸 뒤 기존 테이블에 FK로 참조하게 관계를 맺어준다.**
 
@@ -358,17 +358,17 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 ### 정의
 
-#### 식별자가 아닌 일반 속성 간엔느 종속성이 존재하지 않는다
+#### 식별자가 아닌 일반 속성 간에는 종속성이 존재하지 않는다
 
 #### 3정규형의 대상이 되는 속성을 이행 종속 속성이라고 함
 
 #### 일반 속성간의 종속 관계를 분해하는 것 
 
-![3정규화_위반](./picture/3%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA_%E1%84%8B%E1%85%B1%E1%84%87%E1%85%A1%E1%86%AB.png)
+![3정규화_위반](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/3%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
 
 **D는 일반 속성인 C에 종속되므로 3정규화에 위반된다.**
 
-![3정규화](./picture/3%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA.png)
+![3정규화](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/3%EC%A0%95%EA%B7%9C%ED%99%94.png)
 
 **C,D를 따로 테이블로 나누어서 정의 한 뒤, 기존 테이블에 FK로 참조하여 관계를 맺어준다.**
 
@@ -382,13 +382,13 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 
 
-![BC정규화_위반](./picture/BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA_%E1%84%8B%E1%85%B1%E1%84%87%E1%85%A1%E1%86%AB.png)
+![BC정규화_위반](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/BC%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
 
 **3정규화 위반과 다르게 PK B가 C에 종속되어 있다. BC정규화를 위반했다.**
 
 
 
-![BC정규화](./picture/BC%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%80%E1%85%B2%E1%84%92%E1%85%AA.png)
+![BC정규화](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/BC%EC%A0%95%EA%B7%9C%ED%99%94.png)
 
 **C, B를 테이블로 따로 분리 한뒤, 3정규화와는 다르게 C를 FK로 참조하야 관계를 맺는다.**
 
@@ -454,7 +454,7 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 #### 트랜잭션의 상태
 
-![트랜잭션 상태](./picture/트랜잭션_상태.jpeg)
+![트랜잭션 상태](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%98_%EC%83%81%ED%83%9C.jpeg)
 
 - 활동(Active): 트랜잭션이 실행중인 상태
 - 실패(Failed): 트랜잭션 실행에 오류가 발생하여 중단된 상태
