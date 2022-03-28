@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7 #이미지
+    platform: linux/amd64
+    volumes: #디렉토리 -v와 동일
+      - ./mysql:/var/lib/mysql
+    restart: always #도커가 종료됬을 시 자동으로 재시작
+    ports: 
+      - "3306:3306"
+    environment: #환경변수 설정 -e와 동일
+      MYSQL_ROOT_PASSWORD: Qwpo1209!@
+      MYSQL_DATABASE: studyDB
+      MYSQL_USER: study
+      MYSQL_PASSWORD: Qwpo1209!@
