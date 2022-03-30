@@ -58,3 +58,48 @@ DISTINCT (UNIQUE) - 테이블에 동일한 데이터 행이 있는 경우 중복
 - SELECT 다음에는 계산식이 올 수 있음
 - 여러 테이블에서 지정하면 결합이 이루어진 JOIN을 이용하는 것 외에 WHERE 절은 공통 열 결합 관계를 지정하는 것도 가능하다. (단, 이 경우 OUTER JOIN은 불가능하다)
 - 이 FROM 절에서 테이블 별칭 지정이 가능하지만 일단 테이블 별칭을 지정하면 테이블 별명으로 묘사 해주지 않으면 에러가 발생한다.
+
+
+
+#### SELECT 문법
+
+~~~SQL
+SELECT [ALL | DISTINCT] 컬럼명 [, 컬럼명...]
+[INTO 테이블명]
+FROM 테이블명 [, 테이블명...]
+[WHERE 조건식]
+[GROUP BY 컬럼명 [HAVING 조건식]]
+[ORDER BY 컬럼명]
+~~~
+
+
+
+#### Select into 문법
+
+- 테이블을 복사하는 문법이다.
+
+다른 DB에서는 Select into를 사용하나, MySQL은 지원하지 않는다.
+
+
+
+**다른 DB의 Select into 문법**
+
+~~~sql
+select *
+into 복사하고 싶은 테이블
+from 원본 테이블
+where 조건식
+~~~
+
+
+
+**MySQL의 Select into 문법**
+
+~~~sql
+create table 복사 테이블 as(
+	select * 
+	from 원본 테이블
+	where 조건식
+)
+~~~
+
