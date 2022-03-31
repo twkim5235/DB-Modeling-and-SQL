@@ -74,6 +74,26 @@ FROM 테이블명 [, 테이블명...]
 
 
 
+##### Case 문
+
+~~~sql
+select (
+  case 기준 col
+    when 값 then '결과1'
+    when 값 then '결과2'
+    else '결과3'
+  end
+	) as '출력 컬럼',
+  col1,
+  col2
+from 테이블
+where 조건
+~~~
+
+
+
+
+
 #### Select into 문법
 
 - 테이블을 복사하는 문법이다.
@@ -105,7 +125,7 @@ create table 복사 테이블 as(
 
 
 
-### 집계함수
+### 집계 함수
 
 - 집계함수는 값 집합에 대한 계산을 수행하고 단일 값을 변환한다.
 - 집계함수는 SELECT 목록 또는 SELECT 문의 HAVING 절에 사용이 가능하다
@@ -123,11 +143,82 @@ create table 복사 테이블 as(
 
 
 
+### 순위 함수
+
+- ROW_NUMBER, DENSE_RANK, RANK, NTILE
+
+- ROW_NUMBER()
+
+  - 1, 2, 3, 4 ... 번호를 부여한다
+
+- SELECT ROW_NUMBER() OVER (PARTITION BY COL ORDER BY PRICE DESC) 별칭, COL1, COL2, ...
+
+  FROM TABLE
+
+MySQL은 8.0 이상부터 지원한다.
+
+조건 없이 숫자 하나씩 매기기
+
+```sql
+select
+       @rownum := @rownum + 1 as 숫자,
+       customer_name,
+       customer_address,
+       customer_sex,
+       customer_age
+from Customer, (select @rownum := 0) as R;
+```
 
 
 
+순위 매기기(이것이 정확한건지는 잘 모르겠으나 의도한대로는 된다)
+
+- 이름 순으로 순위를 매김
+
+```sql
+select
+       @rownum := @rownum + 1 as 숫자,
+       customer_name,
+       customer_address,
+       customer_sex,
+       customer_age
+from Customer, (select @rownum := 0) as R
+order by customer_name;
+```
 
 
+
+- 성별로 각각의 그룹마다 번호 매기기
+
+```sql
+select case @grouping
+           when customer_sex then @rownum := @rownum + 1
+           else @rownum := 1
+           end as 순위,
+       customer_name,
+       customer_address,
+       @grouping := customer_sex as customer_sex,
+       customer_age
+from Customer,
+     (select @grouping := '', @rownum := 0) as R
+order by customer_sex, customer_name desc;
+```
+
+결과 값
+
+| 순위 | customer_name | customer_address     | customer_sex | customer_age |
+| ---- | ------------- | -------------------- | ------------ | ------------ |
+| 1    | 김길산님      | 경기도               | 0            | 43           |
+| 2    | 나길동님      | 인천시 연수구 땡땡동 | 0            | 24           |
+| 3    | 박길산님      | 충청도               | 0            | 23           |
+| 4    | 박길동님      | 인천시 연수구 땡땡동 | 0            | 25           |
+| 1    | 김길동님      | 인천시 연수구 땡땡동 | 1            | 29           |
+| 2    | 이길동님      | 인천시 연수구 땡땡동 | 1            | 23           |
+| 3    | 김길동님      | 인천시 연수구 땡땡동 | 1            | 25           |
+| 4    | 이길산님      | 경상도               | 1            | 32           |
+| 5    | 이길동님      | 인천시 연수구 땡땡동 | 1            | 26           |
+| 6    | 장길산님      | 서울시 마포구 신촌동 | 1            | 45           |
+| 7    | 홍길동님      | 인천시 연수구 땡땡동 | 1            | 22           |
 
 
 
