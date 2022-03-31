@@ -222,6 +222,104 @@ order by customer_sex, customer_name desc;
 
 
 
+### 스칼라 함수
+
+스칼라 함수란 단일 값을 반환하는 함수이다.
+
+| 함수 범주 | 설명                              |
+| --------- | --------------------------------- |
+| 변환 함수 | 데이터 형식 캐스팅 및 변환을 지원 |
+
+#### 1. CAST
+
+- 문법
+  - CAST(expression AS datatype(length))
+
+- 파라미터
+  - expression: 필수 항목, 변환될 값
+  - datatype: 필수 항목, expression이 변환될 데이터 타입
+  - Length: 선택항목, 결과 데이터 타입의 길이를 지정. 문자열에서 사용한다. 
+- 사용 예시
+  - SELECT CAST('25' as INT) + 3;
+  - SELECT CAST('2017-08-25' as datetime);
+
+
+
+#### 2. CONVERT
+
+- 문법
+  - CONVERT(expression[style], data_type[(length)])
+
+- 파라미터
+  - expression: 필수 항목, 변환될 값
+  - datatype: 필수 항목, expression이 변환될 데이터 타입
+  - Length: 선택 항목, 결과 데이터 타입의 길이를 지정. 문자열에 사용 
+- 사용 예시
+  - SELECT CONVERT(34, char);
+  - SELECT CONVERT(price, NVARCHAR(10)) + '원' as 금액
+
+
+
+이외 대표적인 스칼라 함수들(MSSQL 기준이나 궁금한것은 Mysql을 앞에다 붙이거 검색하면 됨)
+
+![](./picture/스칼라_함수_목록.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
