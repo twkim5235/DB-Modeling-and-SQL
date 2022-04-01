@@ -294,7 +294,7 @@ order by customer_sex, customer_name desc;
 update 변경할 테이블 별칭
          join 조인할 테이블 별칭 on 조인 별칭.컬럼 = 변경 별칭.컬럼
 set 변경할 테이블의 컬럼 = 100000
-[where 조건]
+where 조건
 ~~~
 
 
@@ -372,6 +372,95 @@ where customer_id in (select customer_id from customer_purchase_car);
   from Customer a
   where customer_id in (select customer_id from customer_purchase_car b where a.customer_id = b.customer_id);
   ```
+
+
+
+### 트랜잭션
+
+트랜잭션이란 데이터 베이스 상호작용 단위이다.
+
+**트랜잭션의 성질**
+
+- ACID
+  - 원자성(Atomicity)
+    - 트랜잭션의 작업이 부분적으로 실행되다가 중단되지 않는 것을 보장하는 능력이다
+      - 만약에 중단 될시 이전 상태로 RollBack 된다
+      - 제대로 작업이 진행 되면 마지막에 commit 된다.
+    - All or Nothing
+  - 일관성(Consistency)
+    - 트랜잭션이 실행을 성공적으로 완료하면 언제나 일관성 있는 데이터베이스 상태로 유지하는 것을 의미한다.
+  - 독립성(Isolation)
+    - 트랜잭션을 수행 시 다른 트랜잭션의 연산 작업이 끼어들지 못하도록 보장하는 것을 의미한다.
+  - 지속성(Durability)
+    - 성공적으로 수행된 트랜잭션은 영원히 반영되어야 함을 의미한다.
+
+
+
+#### mysql Transaction 사용법
+
+~~~sql
+start transaction; //트랜잭션 시작
+
+insert into customer_purchase_car (customer_id, car_id, purchase_date, purchase_price)
+VALUES (9, 4, '20210206', (select price from Car where id = 4));
+
+update Customer a
+    join (select customer_id, COUNT(*) cnt
+          from customer_purchase_car
+          group by customer_id) cpc on a.customer_id = cpc.customer_id
+set number_of_car = cnt
+where a.customer_id = cpc.customer_id;
+
+select a.customer_id, a.customer_name, a.number_of_car, car_id, purchase_date
+from Customer a
+         join customer_purchase_car cpc on a.customer_id = cpc.customer_id;
+
+rollback; //rollback 전속
+
+commit; //commit을 전송하여 영속화
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
