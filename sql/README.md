@@ -266,21 +266,26 @@ order by customer_sex, customer_name desc;
 
 
 
+### Join Update, Delete
+
+**Join Update 문**
+
+~~~SQL
+update 변경할 테이블 별칭
+         join 조인할 테이블 별칭 on 조인 별칭.컬럼 = 변경 별칭.컬럼
+set 변경할 테이블의 컬럼 = 100000
+[where 조건]
+~~~
 
 
 
+**Join Delete 문**
 
-
-
-
-
-
-
-
-
-
-
-
+```sql
+delete 삭제할 테이블 from 삭제할 테이블 별칭
+         join 조인할 테이블 별칭 on 조인 별칭.컬럼 = 삭제 별칭.컬럼
+[where 조건]
+```
 
 
 
