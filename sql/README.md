@@ -125,6 +125,26 @@ create table 복사 테이블 as(
 
 
 
+**union**
+
+컬럼의 데이터 형식이 똑같으면 여러개의 select 절을 union 으로 묶을 수 있다
+
+ex)
+
+```sql
+select '남성 고객', count(*)
+from Customer
+where customer_sex = 0
+union
+select '여성 고객', count(*)
+from Customer
+where customer_sex = 1
+union
+select '미확인 고객', count(*)
+from Customer
+where customer_sex is null
+```
+
 ### 집계 함수
 
 - 집계함수는 값 집합에 대한 계산을 수행하고 단일 값을 변환한다.
@@ -289,13 +309,69 @@ delete 삭제할 테이블 from 삭제할 테이블 별칭
 
 
 
+### 서브쿼리
+
+**서브뤄리란 하나의 쿼리문 안에 포함되어 있는 또 하나의 쿼리문**
+
+- 여러 번의 쿼리를 수행해야만 얻을 수 있는 결과를 하나의 중첩된 쿼리 문장으로 간편하게 결과를 얻을 수 있게 해준다.
+- 서브쿼리는 괄호로 묶어서 사용한다
+- 서브쿼리 안에서 order by 절을 사용할 수 없다.
+
+**반환 값에 따른 서브쿼리**
+
+- 단일 행 서브쿼리: 서브쿼리의 결과가 1행
+- 다중 행 서브쿼리: 서브쿼리의 결과가 여러행
+- 다중 컬럼 서브쿼리: 서브쿼리의 결과가 여러 컬럼
+
+서브쿼리는 독립적으로 어떠한 테이블에서든 다 가져올 수 있다.
 
 
 
+**SELECT 절 서브쿼리(스칼라 서브쿼리)**
+
+```sql
+select (select COUNT(*) from Customer where customer_sex = 1) 여성_고객,
+       (select COUNT(*) from Customer where customer_sex = 0) 남성_고객,
+       (select COUNT(*) from Customer where customer_sex is null) 미확인_고객,
+       (select COUNT(*) from customer_purchase_car) 자동차_총_판매대수,
+       (select SUM(purchase_price) from customer_purchase_car) 자동차_총_매출금액
+```
+
+**FROM 절 서브쿼리 (인라인 뷰)**
+
+```sql
+select * from
+(
+  select category, count(*) cnt
+	from Customer
+	group by category) a
+where cnt = 1;
+```
+
+**WHERE절 서브쿼리**
+
+도메인의 역할을 함 (영역을 제한 함)
+
+```sql
+select *
+from Customer
+where customer_id in (select customer_id from customer_purchase_car);
+```
 
 
 
+#### 상관 서브쿼리
 
+- 내부의 쿼리에서 외부 쿼리테이블의 데이터를 참조하는 쿼리
+
+  - 메인 쿼리의 테이블의 행마다 서브쿼리가 반복 실행 됨
+  - 다른 행의 열끼리 비교하는 쿼리
+
+  ```sql
+  select *
+  from Customer a
+  where customer_id in (select customer_id from customer_purchase_car b where a.customer_id = b.customer_id);
+  ```
 
 
 
