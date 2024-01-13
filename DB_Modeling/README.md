@@ -346,11 +346,11 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 #### 2정규형이기 위해서는 모든 비 식별자 속성은 후보 식별자 속성에 완전 함수 종속돼야 한다.
 
-![2정규형 위반](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/2%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
+![2정규형 위반](./picture/2%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
 
 **C라는 항목이 A, B에 종속적인게 아니라 B에만 종속되기 때문에 2정규화에 위반 된다.**
 
-![2정규형](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/2%EC%A0%95%EA%B7%9C%ED%99%94.png)
+![2정규형](./picture/2%EC%A0%95%EA%B7%9C%ED%99%94.png)
 
 **B, C를 따로 테이블로 꺼낸 뒤 기존 테이블에 FK로 참조하게 관계를 맺어준다.**
 
@@ -364,11 +364,11 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 #### 일반 속성간의 종속 관계를 분해하는 것 
 
-![3정규화_위반](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/3%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
+![3정규화_위반](./picture/3%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
 
 **D는 일반 속성인 C에 종속되므로 3정규화에 위반된다.**
 
-![3정규화](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/3%EC%A0%95%EA%B7%9C%ED%99%94.png)
+![3정규화](./picture/3%EC%A0%95%EA%B7%9C%ED%99%94.png)
 
 **C,D를 따로 테이블로 나누어서 정의 한 뒤, 기존 테이블에 FK로 참조하여 관계를 맺어준다.**
 
@@ -382,13 +382,13 @@ CALL 프로시저 이름(필드, 필드, ...);
 
 
 
-![BC정규화_위반](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/BC%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
+![BC정규화_위반](./picture/BC%EC%A0%95%EA%B7%9C%ED%99%94_%EC%9C%84%EB%B0%98.png)
 
 **3정규화 위반과 다르게 PK B가 C에 종속되어 있다. BC정규화를 위반했다.**
 
 
 
-![BC정규화](https://github.com/twkim5235/DB-Modeling-and-SQL/blob/main/DB_Modeling/picture/BC%EC%A0%95%EA%B7%9C%ED%99%94.png)
+![BC정규화](./picture/BC%EC%A0%95%EA%B7%9C%ED%99%94.png)
 
 **C, B를 테이블로 따로 분리 한뒤, 3정규화와는 다르게 C를 FK로 참조하야 관계를 맺는다.**
 
